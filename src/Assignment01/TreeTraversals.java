@@ -7,6 +7,9 @@ import java.util.Queue;
 
 import Models.Node;
 
+/**
+ * All traversals are O(n).
+ */
 public class TreeTraversals<T> {
 
     /**
