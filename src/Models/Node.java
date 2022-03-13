@@ -1,6 +1,6 @@
 package Models;
 
-public class Node<T> {
+public class Node<T extends Comparable<? super T>> {
 
     private T _data;
     private Node<T> _rightChild;
@@ -29,6 +29,16 @@ public class Node<T> {
     public void setData(T data) {
 
         _data = data;
+    }
+
+    public void setLeftChild(Node<T> data){
+
+        _leftChild = data;
+    }
+
+    public void setRightChild( Node<T> data){
+
+        _rightChild = data;
     }
 
     /**

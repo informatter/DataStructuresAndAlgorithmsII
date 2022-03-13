@@ -10,7 +10,7 @@ import Models.Node;
 /**
  * All traversals are O(n).
  */
-public class TreeTraversals<T> {
+public class TreeTraversals<T extends Comparable<? super T>> {
 
     /**
      * @param node
