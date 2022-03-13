@@ -1,7 +1,9 @@
 package Assignment01;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 import Models.Node;
 
@@ -58,6 +60,22 @@ public class TreeTraversals<T> {
     }
 
     /**
+     * @param Nodenode
+     * @return List<T>
+     */
+    public List<T> LevelOrder(Node<T> node) {
+
+        var output = new ArrayList<T>();
+
+        this.LevelOrderWork(node, output);
+
+        return output;
+    }
+
+    /**
+     * Traverses the tree in a "breadth" manner, that is
+     * a level at a time from the root.
+     * 
      * @param node
      *               Initially this node represents the root of the tree.
      * @param output
@@ -106,6 +124,35 @@ public class TreeTraversals<T> {
         PreOrderWork(node.getLeftChild(), output);
 
         PreOrderWork(node.getRightChild(), output);
+    }
+
+    /**
+     * Traverses the tree in a "breadth" manner, that is
+     * a level at a time from the root.
+     * 
+     * @param node
+     *               Initially this node represents the root of the tree.
+     * @param output
+     */
+    private void LevelOrderWork(Node<T> node, List<T> output) {
+
+        Queue<Node<T>> queue = new LinkedList<Node<T>>();
+
+        queue.add(node);
+
+        while (queue.size() > 0) {
+            var current = queue.remove();
+
+            if (current == null)
+                continue;
+
+            output.add(current.getData());
+
+            queue.add(current.getLeftChild());
+
+            queue.add(current.getRightChild());
+        }
+
     }
 
 }
