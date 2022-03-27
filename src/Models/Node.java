@@ -1,12 +1,12 @@
 package Models;
 
-public class Node<T extends Comparable<? super T>> {
+public class Node {
 
-    private T _data;
-    private Node<T> _rightChild;
-    private Node<T> _leftChild;
+    private float _data;
+    private Node _rightChild;
+    private Node _leftChild;
 
-    public Node(T data) {
+    public Node(float data) {
 
         _data = data;
     }
@@ -16,7 +16,7 @@ public class Node<T extends Comparable<? super T>> {
      * 
      * @return T
      */
-    public T getData() {
+    public float getData() {
 
         return _data;
     }
@@ -26,17 +26,17 @@ public class Node<T extends Comparable<? super T>> {
      * 
      * @param data
      */
-    public void setData(T data) {
+    public void setData(float data) {
 
         _data = data;
     }
 
-    public void setLeftChild(Node<T> data){
+    public void setLeftChild(Node data){
 
         _leftChild = data;
     }
 
-    public void setRightChild( Node<T> data){
+    public void setRightChild( Node data){
 
         _rightChild = data;
     }
@@ -48,7 +48,7 @@ public class Node<T extends Comparable<? super T>> {
      * 
      * @return Node<T>
      */
-    public Node<T> getLeftChild() {
+    public Node getLeftChild() {
 
         return _leftChild;
     }
@@ -60,7 +60,7 @@ public class Node<T extends Comparable<? super T>> {
      * 
      * @return Node<T>
      */
-    public Node<T> getRightChild() {
+    public Node getRightChild() {
 
         return _rightChild;
     }
