@@ -1,64 +1,55 @@
 package Assignment02;
-
 import Models.Node;
 
-public class BinarySearchTree<T extends Comparable<? super T>> {
+public class BinarySearchTree<T extends Comparable<? super T>>  {
 
     private Node<T> _root;
-
+    private int _size;
+    
+    /** 
+     * adds a new Node to this BinarySearchTree
+     * @param data
+     * @return false if the data is already present
+     * in this BST.
+     */
     public Boolean add(T data) {
 
-        if (_root == null) {
-
-            _root = new Node<T>(data);
-
-            return true;
-        }
-
-        return false;
-
+        var result = this.addWork(_root, data);
+        if(result == null) {return false;};
+        _root = result;
+        return true;
     }
 
-    private void addWork(Node<T> node) {
+    
+    /** 
+     * The recursive method which actually does the work.
+     * @param current 
+     * the current Node<T> to being traversed.
+     * @param data 
+     * the data to add.
+     * @return the new Node<T> that was added to this BST.
+     */
+    private Node<T> addWork(Node<T> current, T data) {
 
-        Node<T> current = null;
-        if (node.getLeftChild() == null && node.getRightChild() == null)
-            current = _root;
-
-        else
-            current = node;
-
-        if (node.getData() < current.getData()) {
-
-            var left = current.getLeftChild();
-
-            if (left == null) {
-
-                current.setLeftChild(node);
-
-                return;
-            }
-
-            // current = left;
-
-            addWork(left);
-
+        if (current == null) {
+            _size++;
+            return new Node<T>(data);
         }
 
-        if (node.getData() > current.getData()) {
-
-            var right = current.getRightChild();
-
-            if (right == null) {
-
-                current.setRightChild(node);
-
-                return;
-            }
-
-            addWork(right);
+        //if(a[beginHalf1].compareTo(a[beginHalf2]) <= 0)
+        else if (current.getData() < data) {
+            var leftChild = current.getLeftChild();
+            leftChild = this.addWork(leftChild, data);
         }
 
+        else if (current.getData() > data) {
+            var rightChild = current.getRightChild();
+            rightChild = this.addWork(rightChild, data);
+        }
+
+        else {return null;}
+
+        return current;
     }
 
     // public Boolean search(T data)
