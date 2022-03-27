@@ -10,7 +10,7 @@ import Models.Node;
 /**
  * All traversals are O(n).
  */
-public class TreeTraversals<T extends Comparable<? super T>> {
+public class TreeTraversals {
 
     /**
      * @param node
@@ -19,9 +19,9 @@ public class TreeTraversals<T extends Comparable<? super T>> {
      *         returns all the values in the tree in ascending
      *         order if and only if the tree is a BST.
      */
-    public List<T> InOrder(Node<T> node) {
+    public List<Float> InOrder(Node node) {
 
-        var output = new ArrayList<T>();
+        var output = new ArrayList<Float>();
 
         this.InOrderWork(node, output);
 
@@ -36,9 +36,9 @@ public class TreeTraversals<T extends Comparable<? super T>> {
      *         returns all the values in the tree from bottom
      *         to top, i.e from the leaves.
      */
-    public List<T> PostOrder(Node<T> node) {
+    public List<Float> PostOrder(Node node) {
 
-        var output = new ArrayList<T>();
+        var output = new ArrayList<Float>();
 
         this.PostOrderWork(node, output);
 
@@ -53,9 +53,9 @@ public class TreeTraversals<T extends Comparable<? super T>> {
      *         returns all the values from the left subtree of the
      *         root,and then from the right subtree.
      */
-    public List<T> PreOrder(Node<T> node) {
+    public List<Float> PreOrder(Node node) {
 
-        var output = new ArrayList<T>();
+        var output = new ArrayList<Float>();
 
         this.PreOrderWork(node, output);
 
@@ -66,9 +66,9 @@ public class TreeTraversals<T extends Comparable<? super T>> {
      * @param Nodenode
      * @return List<T>
      */
-    public List<T> LevelOrder(Node<T> node) {
+    public List<Float> LevelOrder(Node node) {
 
-        var output = new ArrayList<T>();
+        var output = new ArrayList<Float>();
 
         this.LevelOrderWork(node, output);
 
@@ -83,7 +83,7 @@ public class TreeTraversals<T extends Comparable<? super T>> {
      *               Initially this node represents the root of the tree.
      * @param output
      */
-    private void InOrderWork(Node<T> node, List<T> output) {
+    private void InOrderWork(Node node, List<Float> output) {
 
         if (node == null)
             return;
@@ -100,7 +100,7 @@ public class TreeTraversals<T extends Comparable<? super T>> {
      *               Initially this node represents the root of the tree.
      * @param output
      */
-    private void PostOrderWork(Node<T> node, List<T> output) {
+    private void PostOrderWork(Node node, List<Float> output) {
 
         if (node == null)
             return;
@@ -117,7 +117,7 @@ public class TreeTraversals<T extends Comparable<? super T>> {
      *               Initially this node represents the root of the tree.
      * @param output
      */
-    private void PreOrderWork(Node<T> node, List<T> output) {
+    private void PreOrderWork(Node node, List<Float> output) {
 
         if (node == null)
             return;
@@ -137,9 +137,9 @@ public class TreeTraversals<T extends Comparable<? super T>> {
      *               Initially this node represents the root of the tree.
      * @param output
      */
-    private void LevelOrderWork(Node<T> node, List<T> output) {
+    private void LevelOrderWork(Node node, List<Float> output) {
 
-        Queue<Node<T>> queue = new LinkedList<Node<T>>();
+        Queue<Node> queue = new LinkedList<Node>();
 
         queue.add(node);
 
