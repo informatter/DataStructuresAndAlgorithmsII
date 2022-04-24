@@ -11,26 +11,25 @@ public class BinarySearchTree {
      * adds a new Node to this BinarySearchTree
      * 
      * @param data
-     * @return false if the data is already present
-     *         in this BST.
+     * @return bull if the data is already present in this BST.
      */
-    public Node add(Integer data) {
+    public Boolean add(Integer data) {
         var result = this.addWork(_root, data);
         if (result == null) {
-            return null;
+            return false;
         }
         _root = result;
-        return result;
+        return true;
     }
 
     /**
      * The recursive method which actually does the work.
      * 
      * @param current
-     *                the current Node<T> being traversed.
+     * the current Node<T> being traversed.
      * @param data
-     *                the data to add.
-     * @return the new Node<T> that was added to this BST.
+     *  the data to add.
+     * @return the new Node that was added to the BST.
      */
     private Node addWork(Node current, float data) {
         // If the BST is empty, this adds the root.
@@ -69,8 +68,11 @@ public class BinarySearchTree {
     }
 
     /** 
+     * Searches for a node storing the provided value 
      * @param data
+     * The data to search for
      * @return Boolean
+     * Returns true of the node was found; otherwise false.
      */
     public Boolean search(int data){
         return this.searchWork(_root,data);
@@ -78,8 +80,11 @@ public class BinarySearchTree {
    
     /** 
      * @param current
-     * @param data
+     * The current node being traversed.
+     * @param  data 
+     * The data to search for
      * @return Boolean
+     * Returns true of the node was found; otherwise false.
      */
     private Boolean searchWork(Node current, int data) {
         if (_root == null) {
