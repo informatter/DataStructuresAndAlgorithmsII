@@ -71,10 +71,10 @@ public class BinarySearchTree {
      * Searches for a node storing the provided value 
      * @param data
      * The data to search for
-     * @return Boolean
-     * Returns true of the node was found; otherwise false.
+     * @return Node
+     * Returns the corresponding node if it was found; otherwise null.
      */
-    public Boolean search(int data){
+    public Node search(int data){
         return this.searchWork(_root,data);
     }
    
@@ -83,20 +83,20 @@ public class BinarySearchTree {
      * The current node being traversed.
      * @param  data 
      * The data to search for
-     * @return Boolean
-     * Returns true of the node was found; otherwise false.
+     * @return Node
+     * Returns the corresponding node if it was found; otherwise null.
      */
-    private Boolean searchWork(Node current, int data) {
+    private Node searchWork(Node current, int data) {
         if (_root == null) {
-            return false;
+            return null;
         }
 
         if(current == null){
-            return false;
+            return null;
         }
 
         if(data == current.getData()){
-            return true;
+            return current;
         }
 
         else if (data < current.getData()) {
@@ -109,7 +109,33 @@ public class BinarySearchTree {
             return searchWork(rightChild, data);
         }
 
-        return false;
+        return current;
+    }
+
+
+    public Node removeWork(Node current,int data){
+        if(_root == null){
+            return false;
+        }
+
+        else if (data < current.getData()) {
+            var leftChild = current.getLeftChild();
+            if(leftChild!=null && leftChild.g)
+            return searchWork(leftChild, data);
+        }
+
+        // This means that the node to remove does not exist!
+        // if(node==null){
+        //     return false;
+        // }
+
+        // if(!node.hasChildren()){
+
+        // }
+
+
+        // return true;
+
     }
 
 }

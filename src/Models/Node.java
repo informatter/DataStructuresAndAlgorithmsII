@@ -21,6 +21,13 @@ public class Node {
         return _data;
     }
 
+    public Boolean hasChildren(){
+        if(this.getLeftChild()==null && this.getRightChild() ==null){
+            return false;
+        }
+        return true;
+    }
+
     /**
      * sets the data stored in this Node<T>.
      * 
