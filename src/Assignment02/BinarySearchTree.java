@@ -26,9 +26,9 @@ public class BinarySearchTree {
      * The recursive method which actually does the work.
      * 
      * @param current
-     * the current Node<T> being traversed.
+     *                the current Node<T> being traversed.
      * @param data
-     *  the data to add.
+     *                the data to add.
      * @return the new Node that was added to the BST.
      */
     private Node addWork(Node current, float data) {
@@ -52,50 +52,51 @@ public class BinarySearchTree {
         return current;
     }
 
-    public void clear(){
+    public void clear() {
         _root = null;
     }
 
-    /** 
+    /**
      * @return long
      */
     public long getSize() {
         return _size;
     }
 
-    public Node getRoot(){
+    public Node getRoot() {
         return _root;
     }
 
-    /** 
-     * Searches for a node storing the provided value 
+    /**
+     * Searches for a node storing the provided value
+     * 
      * @param data
-     * The data to search for
+     *             The data to search for
      * @return Node
-     * Returns the corresponding node if it was found; otherwise null.
+     *         Returns the corresponding node if it was found; otherwise null.
      */
-    public Node search(int data){
-        return this.searchWork(_root,data);
+    public Node search(int data) {
+        return this.searchWork(_root, data);
     }
-   
-    /** 
+
+    /**
      * @param current
-     * The current node being traversed.
-     * @param  data 
-     * The data to search for
+     *                The current node being traversed.
+     * @param data
+     *                The data to search for
      * @return Node
-     * Returns the corresponding node if it was found; otherwise null.
+     *         Returns the corresponding node if it was found; otherwise null.
      */
     private Node searchWork(Node current, int data) {
         if (_root == null) {
             return null;
         }
 
-        if(current == null){
+        if (current == null) {
             return null;
         }
 
-        if(data == current.getData()){
+        if (data == current.getData()) {
             return current;
         }
 
@@ -112,29 +113,56 @@ public class BinarySearchTree {
         return current;
     }
 
-
-    public Node removeWork(Node current,int data){
-        if(_root == null){
-            return false;
+    public Node removeWork(Node current, int data) {
+        if (_root == null || current == null) {
+            return null;
         }
 
         else if (data < current.getData()) {
             var leftChild = current.getLeftChild();
-            if(leftChild!=null && leftChild.g)
-            return searchWork(leftChild, data);
+            leftChild = this.removeWork(leftChild, data);
+            current.setLeftChild(leftChild);
+        }
+         else if (data > current.getData()) {
+            var rightChild = current.getRightChild();
+            rightChild = this.removeWork(rightChild, data);
+            current.setRightChild(rightChild);
         }
 
-        // This means that the node to remove does not exist!
-        // if(node==null){
-        //     return false;
-        // }
+        // the node to remove was found!
+        else{
+            _size--;
+            var rightChild = current.getRightChild();
+            var leftChild = current.getLeftChild();
 
-        // if(!node.hasChildren()){
+            // case where node to remove has no children.
+            // i.e current is a leaf node.
+            if(rightChild == null && leftChild == null){
+                return null;
+            }
 
-        // }
+            // case where node to remove has one
+            // child
+            if(rightChild!=null && leftChild == null){
+                current = null;
+                return rightChild;
+            }if(leftChild!=null && rightChild == null){
+                current = null;
+                return leftChild;
+            }
+
+            // node to remove has two children!
+            if(rightChild != null && leftChild != null){
+                // we will use predecessor.
+                // a. traverse one level to the left of current
+                // b. traverse depth first to the right untill a null child is found.
 
 
-        // return true;
+            }
+
+        }
+
+        return current;
 
     }
 
